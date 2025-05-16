@@ -53,7 +53,7 @@ def create_task():
 @tasks_bp.route('/tasks/<int:task_id>', methods=['PATCH'])
 def update_task(task_id):
     if not request.is_json:
-        return jsonify({'error': "Invalid JSON payload"}}), 400
+        return jsonify({'error': "Invalid JSON payload"}), 400
 
     task = Task.query.get(task_id)
     if not task:
@@ -61,21 +61,21 @@ def update_task(task_id):
 
     data = request.get_json()
 
-    # rename?
+    #update task name
     if 'name' in data:
         name = data['name']
         if not name or not isinstance(name, str) or not name.strip():
             return jsonify({'error': "If provided, 'name' must be a non-empty string"}), 400
         task.name = name.strip()
 
-    # toggle completion?
+    #uodate task status
     if 'is_completed' in data:
         is_completed = data['is_completed']
         if not isinstance(is_completed, bool):
             return jsonify({'error': "'is_completed' must be a boolean"}), 400
         task.is_completed = is_completed
 
-    # nothing to do?
+    # none
     if not any(k in data for k in ('name', 'is_completed')):
         return jsonify({'error': "No valid field provided to update"}), 400
 
