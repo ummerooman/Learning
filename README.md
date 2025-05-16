@@ -55,11 +55,6 @@ Body: raw, JSON
   name = "Visit the doctor"  
 }
 
-# Error Responses
-## 400
-Invalid or missing data
-## 404 
-Task id does not exist
 
 
 
