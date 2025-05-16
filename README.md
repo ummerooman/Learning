@@ -26,7 +26,7 @@ Body: raw, JSON
 {  
   name : "Take medicines",  
   is_completed: True  
-}
+}  
 {  
   name : "Buy groceries"  
 }
